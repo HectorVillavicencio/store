@@ -6,7 +6,7 @@ import { Directive, ElementRef, inject } from '@angular/core';
 })
 export class HighlightDirective {
 
-  element = inject(ElementRef)
+  element = inject(ElementRef);
 
   constructor() { }
 
