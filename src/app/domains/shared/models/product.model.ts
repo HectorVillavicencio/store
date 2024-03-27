@@ -8,3 +8,5 @@ export interface Product{
     creationAt: string;
     category: Category;
 }
+
+export { Category };
