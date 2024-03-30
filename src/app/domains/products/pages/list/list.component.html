@@ -1,8 +1,22 @@
-<div class="grid grid-cols-4 gap-8 mt-5">
+<div class="flex space-x-4 mt-5">
+    <div >
+        <ul>
+            <li>
+                <a routerLink="/">All</a>
+            </li>
+            @for(category of categories(); track $index){
+            <li>      
+                <a routerLink="/" [queryParams]="{category_id: category.id}" routerLinkActive="router-link-active"  href="">{{category.name}}</a>  
+            </li>
+        }
+        </ul>
+    </div>
+    <div class="grid grid-cols-4 gap-8 w-full">
  
-    @for(product of products(); track $index){
-        <app-product 
-            [product]="product"
-            (addToCart)="addToCart($event)"
-    />
-}
+        @for(product of products(); track $index){
+            <app-product 
+                [product]="product"
+                (addToCart)="addToCart($event)"
+        />
+    }
+</div>
