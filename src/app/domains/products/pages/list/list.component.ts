@@ -24,13 +24,13 @@ export default class ListComponent {
   categories = signal<Category[]>([]);
   private cartService = inject(CartService);
   private ProductService = inject(ProductService);
-  private categoryService = inject(CategoryService);
+  
   @Input() category_id?: string
 
 
   ngOnInit(){
     this.getProducts();
-    this.getCategories();
+  
   }
 
   ngOnChanges(changes: SimpleChanges){
@@ -55,14 +55,4 @@ export default class ListComponent {
   }) 
  }
 
- private getCategories(){
-  this.categoryService.getAll()
-  .subscribe({
-    next: (data) => {
-      this.categories.set(data);
-    },
-    error: () => {
-    }
-  }) 
- }
 }

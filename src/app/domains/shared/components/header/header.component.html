@@ -1,3 +1,85 @@
+<header class=" flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-green-700">
+  <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
+    <div class="flex items-center justify-between">
+      <a class="flex-none" href="https://github.com/HectorVillavicencio/store">
+        <img src="{{ 'assets/git.png' }}" alt="git" class="w-16 " >
+        <span class="font-bold text-gray-50">FAKESTORE</span>
+      </a>
+      
+      <div class="sm:hidden">
+        <button type="button" class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-white dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" data-hs-collapse="#navbar-with-mega-menu" aria-controls="navbar-with-mega-menu" aria-label="Toggle navigation">
+          <svg class="hs-collapse-open:hidden flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+          <svg class="hs-collapse-open:block hidden flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      
+    </div>
+
+    <div id="navbar-with-mega-menu" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block  ">
+      <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
+        <a class="font-medium text-white dark:text-white  dark:hover:text-yellow-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-yellow-300 block hover:underline" 
+        routerLink="/" 
+        routerLinkActive="underline"
+        [routerLinkActiveOptions]="{exact: true}"
+        aria-current="page"
+        >Home</a>
+        <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-white dark:hover:text-yellow-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-yellow-300 block hover:underline" 
+        routerLink="/about"
+        routerLinkActive="underline"
+        >About</a>
+        <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none]">
+          <button id="hs-mega-menu-basic-dr" type="button" class="flex items-center w-full text-gray-600 hover:text-white font-medium dark:text-white dark:hover:text-yellow-300">
+            Category
+            <svg class="ms-1 flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 sm:w-48 z-10 bg-white sm:shadow-md rounded-lg p-2 dark:bg-green-700 sm:dark:border dark:border-green-950 dark:divide-white before:absolute top-full sm:border before:-top-5 before:start-0 before:w-full before:h-5 hidden" >
+            <ul >
+              <li>
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-yellow-300 dark:text-white dark:hover:bg-green-800 dark:hover:text-yellow-300" routerLink="/">All</a>
+              </li>
+              @for(category of categories(); track $index){
+               <li>      
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-yellow-300 dark:text-white dark:hover:bg-green-800 dark:hover:text-yellow-300" routerLink="/" [queryParams]="{category_id: category.id}" routerLinkActive="router-link-active"  href="">{{category.name}}</a>  
+               </li>    
+              } 
+          </ul>
+                
+        </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </nav>
+
+  <div class="flex items-center mx-2 mt-3">
+    <button class="px-2 border rounded relative" (click)="toogleSideMenu()">
+      <div class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white text-sx">{{cart().length}}</div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+        />
+      </svg>
+    </button>
+  </div>
+</header>
+
+
+
+
+
+
+
 <nav  class=" bg-white">
     <div
       class="w-full flex flex-wrap items-center justify-between mx-auto py-4"
@@ -93,8 +175,9 @@
     <div>
       <img [src]="product.images[0]" [alt]="product.title" class="h-6 aspect-square inline-flex"/>
       <span class="mx-2">{{product.title}}</span>
-      <span class="float-right">${{product.price}}</span>
-    </div>
-  }
+      <span class="float-right">{{product.price | currency:'$': 'symbol': '1.2'}}</span>
   </div>
+  }
+  <span class="font-bold">Total ={{total() | currency:'$': 'symbol': '1.2'}}  </span>
 </div>
+
