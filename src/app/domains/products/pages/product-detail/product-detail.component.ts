@@ -4,6 +4,7 @@ import { ProductService } from '@shared/services/product.service';
 import { CommonModule } from '@angular/common';
 import { CartService } from '@shared/services/cart.service';
 
+
 @Component({
   selector: 'app-product-detail',
   standalone: true,
@@ -18,6 +19,8 @@ export default class ProductDetailComponent {
   cover = signal('');
   private productService = inject(ProductService);
   private cartSerice = inject(CartService);
+
+  
 
   ngOnInit(){
     if(this.id){

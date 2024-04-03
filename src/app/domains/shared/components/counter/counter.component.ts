@@ -54,11 +54,7 @@ export class CounterComponent {
     console.log('-'.repeat(10));
   }
 
-  ngOnDestroy(){
-    console.log('nfOnDestroy');
-    console.log('-'.repeat(10));
-    window.clearInterval(this.counterRef);
-  }
+
 
   doSomething(){
     //Puedo correr cualquier cosa Asyncronica
